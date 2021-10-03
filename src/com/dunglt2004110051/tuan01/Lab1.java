@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Lab1 {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        // nhapTen(scanner);
-        // hinhChuNhat(scanner);
+        nhapTen(scanner);
+        hinhChuNhat(scanner);
         theTichKhoiLapPhuong(scanner);
-        // delta(scanner);
+        delta(scanner);
     }
 
     public static void nhapTen(Scanner scanner) {
@@ -18,7 +18,7 @@ public class Lab1 {
         float diemTB = scanner.nextFloat();
         System.out.print(hoTen + " - " + diemTB);
         System.out.println(hoTen + " - " + diemTB);
-        System.out.printf("%s - %f điểm", hoTen, diemTB);
+        System.out.printf("%s - %.1f điểm", hoTen, diemTB);
     }
 
     public static void hinhChuNhat(Scanner scanner) {
@@ -49,11 +49,11 @@ public class Lab1 {
     }
 
     public static void delta(Scanner scanner) {
-        System.out.println("\nNhập a: ");
+        System.out.print("\nNhập a: ");
         short a = scanner.nextShort();
-        System.out.println("Nhập b: ");
+        System.out.print("Nhập b: ");
         short b = scanner.nextShort();
-        System.out.println("Nhập c: ");
+        System.out.print("Nhập c: ");
         short c = scanner.nextShort();
         double delta = Math.pow(b, 2) - 4 * a * c;
         double squareDelta = Math.sqrt(delta);
