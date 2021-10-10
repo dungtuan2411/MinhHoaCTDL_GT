@@ -1,11 +1,7 @@
 package com.dunglt2004110051.tuan03;
 
-public class Lab3 {
+public class Lab3_Bai02 {
     public static void main(String[] args) {
-        bangCuuChuong();
-    }
-
-    static void bangCuuChuong() {
         int i, j;
         for (i = 2; i < 10; i++) {
             System.out.println("=== Bảng cửu chương " + i + " ===");

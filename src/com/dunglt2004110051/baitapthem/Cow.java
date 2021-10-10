@@ -1,4 +1,4 @@
-package com.dunglt2004110051.tuan03;
+package com.dunglt2004110051.baitapthem;
 
 public class Cow {
     // Thuộc tính
