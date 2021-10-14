@@ -4,7 +4,7 @@ public class Sanpham {
     String tenSanPham;
     double gia;
 
-    public Sanpham(String name, double price) {
+    Sanpham(String name, double price) {
         tenSanPham = name;
         gia = price;
     }

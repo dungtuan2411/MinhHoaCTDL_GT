@@ -15,12 +15,12 @@ public class Lab4_Bai02 {
         Scanner scanner = new Scanner(System.in);
         int luaChon;
         do {
-            System.out.println("==== Menu chương trình ====");
+            System.out.println("\n==== Menu chương trình ====");
             System.out.println("1: Nhập danh sách");
             System.out.println("2: Xuất danh sách");
             System.out.println("3: Xuất danh sách ngẫu nhiên");
             System.out.println("4: Sắp xếp giảm dần");
-            System.out.println("5: Xóa phần tử");
+            System.out.println("5: Xóa họ tên");
             System.out.println("6: Thoát");
             System.out.println("===========================");
 

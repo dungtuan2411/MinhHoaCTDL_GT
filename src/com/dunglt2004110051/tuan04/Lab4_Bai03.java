@@ -16,7 +16,7 @@ public class Lab4_Bai03 {
         Scanner scanner = new Scanner(System.in);
         int luaChon;
         do {
-            System.out.println("===== Menu chương trình =====");
+            System.out.println("\n===== Menu chương trình =====");
             System.out.println("1: Nhập danh sách sản phẩm từ bàn phím");
             System.out.println("2: Sắp xếp giảm dần theo giá và xuất ra màn hình ");
             System.out.println("3: Tìm và xóa sản phẩm theo tên nhập từ bàn phím");
@@ -37,6 +37,9 @@ public class Lab4_Bai03 {
                 case 3:
                     scanner.nextLine();
                     xoaSanPhamTheoTen(dsSanPham, scanner);
+                    break;
+                case 4:
+                    xuatGiaTrungBinh(dsSanPham);
                     break;
                 case 5:
                     System.out.println("Kết thúc chương trình");
@@ -59,8 +62,10 @@ public class Lab4_Bai03 {
             listSP.add(new Sanpham(tenSP, price));
 
             scanner.nextLine();
+            System.out.println("=====");
             System.out.print("Nhập thêm (Y/N)? ");
             xacNhan = scanner.nextLine();
+            System.out.println("=====");
 
             if (xacNhan.toUpperCase().equals("N")) {
                 break;
@@ -70,18 +75,21 @@ public class Lab4_Bai03 {
     }
 
     static void sapXepGiamDanTheoGia(ArrayList<Sanpham> listSP) {
+        if (listSP.isEmpty()) {
+            System.out.println("Danh sách này chưa có phần tử");
+            return;
+        }
         Comparator<Sanpham> comp = new Comparator<Sanpham>() {
-            public int compare(Sanpham o1, Sanpham o2) {
-                return Double.compare(o1.gia, o2.gia);
+            public int compare(Sanpham sp1, Sanpham sp2) {
+                return Double.compare(sp1.gia, sp2.gia);
             }
         };
         Collections.sort(listSP, comp);
         Collections.reverse(listSP);
-        System.out.println("==== Giá tiền giảm dần: ====");
+        System.out.println("\n==== Giá tiền giảm dần: ====\n");
 
         for (Sanpham sanpham : listSP) {
             sanpham.inThongTin();
-            System.out.println("\n");
         }
     }
 
@@ -101,11 +109,15 @@ public class Lab4_Bai03 {
 
     // Xóa sản phẩm
     static void xoaSanPhamTheoTen(ArrayList<Sanpham> listSP, Scanner scanner) {
+        if (listSP.isEmpty()) {
+            System.out.println("Danh sách này chưa có phần tử");
+            return;
+        }
         Sanpham sanPhamTimThay = timSanPham(listSP, scanner);
 
         if (sanPhamTimThay != null) {
             listSP.remove(sanPhamTimThay);
-            System.out.println("Danh sách sau khi xóa: ");
+            System.out.println("\n==== Danh sách sau khi xóa: ====\n");
             for (Sanpham sanpham : listSP) {
                 sanpham.inThongTin();
             }
@@ -115,7 +127,16 @@ public class Lab4_Bai03 {
         }
     }
     // Xuất giá trung bình
-    static void xuatGiaTrungBinh() {
-        
+    static void xuatGiaTrungBinh(ArrayList<Sanpham> listSP) {
+        if (listSP.isEmpty()) {
+            System.out.println("Danh sách này chưa có phần tử");
+            return;
+        }
+        double giaTrungBinh, tongTien = 0;
+        for (Sanpham sanpham : listSP) {
+            tongTien += sanpham.gia;
+        }
+        giaTrungBinh = tongTien / listSP.size();
+        System.out.printf("Giá trung bình của sản phẩm: %.1f\n", giaTrungBinh);
     }
 }
