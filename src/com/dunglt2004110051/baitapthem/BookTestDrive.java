@@ -37,51 +37,44 @@ public class BookTestDrive {
         int slpt = scanner.nextInt();
 
         Book[] listBook = new Book[slpt];
+        menu(listBook, scanner, slpt);
+    }
 
-        nhapDanhSach(listBook, scanner);
-        xuatDanhSach(listBook);
-        themPhanTu(listBook, scanner);
+    // Menu
+    static void menu(Book[] listBook, Scanner scanner, int slpt) {
+        int luaChon;
+        System.out.println("\n===== Menu chương trình =====");
+        System.out.println("1: Nhập danh sách");
+        System.out.println("2: Xuất danh sách");
+        System.out.println("3: Thêm");
+        System.out.println("4: Xóa");
+        System.out.println("0: Kết thúc");
+        System.out.println("===============================");
+        do {
+            System.err.print("\nBạn chọn: ");
+            luaChon = scanner.nextInt();
+            switch (luaChon) {
+                case 1:
+                    nhapDanhSach(listBook, scanner, slpt);
+                    break;
+                case 2:
+                    xuatDanhSach(listBook);
+                    break;
+                case 3:
+                    themPhanTu(listBook, scanner);
+                    break;
+                case 0:
+                    System.out.println("Kết thúc!");
+                    ;
+                    break;
+                default:
+                    break;
+            }
+        } while (luaChon != 0);
     }
 
     // Nhập danh sách
-    static void nhapDanhSach(Book[] listBook, Scanner scanner) {
-        for (int i = 0; i < listBook.length; i++) {
-            System.out.println("==== Sách thứ " + (i + 1) + ":");
-            System.out.print("Giá: ");
-            double gia = scanner.nextDouble();
-            scanner.nextLine();
-
-            System.out.print("Nhà xuất bản: ");
-            String nsx = scanner.nextLine();
-
-            System.out.print("Năm xuất bản: ");
-            int namSX = scanner.nextInt();
-
-            System.out.print("Giá bán: ");
-            double giaBan = scanner.nextDouble();
-
-            System.out.print("Số lượng: ");
-            int sl = scanner.nextInt();
-            scanner.nextLine();
-
-            System.out.print("Loại: ");
-            String loai = scanner.nextLine();
-            listBook[i] = new Book(gia, nsx, namSX, giaBan, sl, loai);
-        }
-    }
-
-    // Xuất danh sách
-    static void xuatDanhSach(Book[] listBook) {
-        for (int i = 0; i < listBook.length; i++) {
-            System.out.printf("\n===== Sách thứ %d =====\n", (i + 1));
-            listBook[i].InThongTin();
-        }
-    }
-
-    // Thêm phần tử mới vào cuối mảng
-    static void themPhanTu(Book[] listBooks, Scanner scanner) {
-        System.out.println("\n===== Nhập thông tin sách muốn thêm =====");
-
+    static Book nhap(Scanner scanner) {
         System.out.print("Giá: ");
         double gia = scanner.nextDouble();
         scanner.nextLine();
@@ -102,7 +95,35 @@ public class BookTestDrive {
         System.out.print("Loại: ");
         String loai = scanner.nextLine();
 
-        Book newBook = new Book(gia, nsx, namSX, giaBan, sl, loai);
+        Book book = new Book(gia, nsx, namSX, giaBan, sl, loai);
+        return book;
+    }
+
+    static void nhapDanhSach(Book[] listBook, Scanner scanner, int slpt) {
+        for (int i = 0; i < slpt; i++) {
+            System.out.println("\nSách thứ " + (i + 1));
+            listBook[i] = nhap(scanner);
+        }
+    }
+
+    // Xuất danh sách
+    static void xuatDanhSach(Book[] listBook) {
+        if (listBook.length == 0) {
+            System.out.println("Chưa có sách");
+            return;
+        }
+        System.out.println("===== Danh sách hiện tại =====");
+        for (int i = 0; i < listBook.length; i++) {
+            System.out.printf("\nSách thứ %d\n", (i + 1));
+            listBook[i].InThongTin();
+        }
+    }
+
+    // Thêm phần tử mới vào cuối mảng
+    static void themPhanTu(Book[] listBooks, Scanner scanner) {
+        System.out.println("\n===== Nhập thông tin sách muốn thêm =====");
+
+        Book newBook = nhap(scanner);
 
         int arrLength = listBooks.length;
 
@@ -114,9 +135,13 @@ public class BookTestDrive {
 
         newListBook[arrLength] = newBook;
 
-        System.out.println("\n=== Danh sách sau khi thêm ===");
+        System.out.println("\n===== Danh sách sau khi thêm =====");
         for (Book book : newListBook) {
             book.InThongTin();
         }
+    }
+    // Xóa phần tử
+    static void xoaPhanTu(Book[] listBooks, Scanner scanner, int slpt) {
+        
     }
 }
