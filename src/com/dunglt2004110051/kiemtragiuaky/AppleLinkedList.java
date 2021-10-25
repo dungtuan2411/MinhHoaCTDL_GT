@@ -20,6 +20,18 @@ public class AppleLinkedList {
         }
     }
 
+    void themVaoDauDanhSach(Apple a) {
+        Node newApple = new Node(a);
+        if (head == null) {
+            head = newApple;
+            tail = newApple;
+        }
+        else {
+            newApple.next = head;
+            head = newApple;
+        }
+    }
+
     void inDanhSach() {
         Node current = head;
 
