@@ -14,10 +14,11 @@ public class AppleArrayListTestDrive {
     static void menu(List<Apple> listApple, Scanner scanner) {
         int luaChon;
         do {
-            System.out.println("||== Quản lý kho táo bằng ArrayList ==||");
+            System.out.println("\n||== Quản lý kho táo bằng ArrayList ==||");
             System.out.println("||1: Thêm táo vào kho                 ||");
             System.out.println("||2: Tìm táo theo màu                 ||");
             System.out.println("||3: In danh sách táo                 ||");
+            System.out.println("||0: Kết thúc                         ||");
             System.out.println("||====================================||");
             System.out.print("Bạn chọn: ");
             luaChon = scanner.nextInt();
@@ -48,18 +49,9 @@ public class AppleArrayListTestDrive {
         String xacNhan = "y";
         do {
             if (xacNhan.toUpperCase().equals("Y")) {
-                System.out.println("Nhập thông tin táo: ");
-                System.out.print("Mã id: ");
-                int id = scanner.nextInt();
+                Apple newApple = Apple.nhapThongTin(scanner);
 
-                System.out.print("Khối lượng: ");
-                float weight = scanner.nextFloat();
-
-                scanner.nextLine();
-                System.out.print("Màu: ");
-                String color = scanner.nextLine();
-
-                listApple.add(new Apple(id, weight, color));
+                listApple.add(newApple);
             } else
                 System.out.println("Sai cú pháp! Chọn y hoặc n");
 
