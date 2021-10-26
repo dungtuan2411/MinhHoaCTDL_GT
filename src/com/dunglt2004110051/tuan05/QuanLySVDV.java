@@ -44,6 +44,14 @@ public class QuanLySVDV {
                 scanner.nextLine();
                 timSinhVienTheoTen(dssv, scanner);
                 break;
+            case 5:
+                scanner.nextLine();
+                suaSinhVienTheoTen(dssv, scanner);
+                break;
+            case 6:
+                scanner.nextLine();
+                xoaSinhVienTheoTen(dssv, scanner);
+                break;
             case 7:
                 System.out.println("Kết thúc");
                 break;
@@ -109,7 +117,7 @@ public class QuanLySVDV {
         }
     }
 
-    static SVDV timSinhVien(List<SVDV> dssv, Scanner scanner, String hoTenCanTim) {
+    static SVDV timSinhVien(List<SVDV> dssv, String hoTenCanTim) {
         SVDV svCanTim = null;
         for (SVDV svdv : dssv) {
             if (svdv.hoTen.equals(hoTenCanTim)) {
@@ -124,13 +132,60 @@ public class QuanLySVDV {
         System.out.print("Nhập họ tên cần tìm: ");
         String findName = scanner.nextLine();
 
-        SVDV svTim = timSinhVien(dssv, scanner, findName);
+        SVDV svTim = timSinhVien(dssv, findName);
         while (!dssv.contains(svTim)) {
             System.out.print("Tên không tồn tại, nhập lại: ");
             findName = scanner.nextLine();
-            svTim = timSinhVien(dssv, scanner, findName);
+            svTim = timSinhVien(dssv, findName);
         }
-        System.out.println("\nThông tin sinh viên: ");
+        System.out.println("\nThông tin sinh viên tìm thấy: ");
         svTim.inThongTin();
+    }
+
+    static void suaSinhVienTheoTen(List<SVDV> dssv, Scanner scanner) {
+        System.out.print("Nhập họ tên cần tìm: ");
+        String findName = scanner.nextLine();
+
+        SVDV svTim = timSinhVien(dssv, findName);
+        while (!dssv.contains(svTim)) {
+            System.out.print("Tên không tồn tại, nhập lại: ");
+            findName = scanner.nextLine();
+            svTim = timSinhVien(dssv, findName);
+        }
+
+        int luaChonSua;
+
+        System.out.println("1. Sửa tên");
+        System.out.println("2. Sửa điểm");
+        System.out.print("Bạn chọn: ");
+        luaChonSua = scanner.nextInt();
+
+        switch (luaChonSua) {
+        case 1:
+            scanner.nextLine();
+            System.out.print("Nhập tên cần sửa: ");
+            svTim.hoTen = scanner.nextLine();
+            break;
+        case 2:
+            System.out.print("Nhập điểm cần sửa: ");
+            svTim.diem = scanner.nextFloat();
+            break;
+        default:
+            break;
+        }
+    }
+
+    static void xoaSinhVienTheoTen(List<SVDV> dssv, Scanner scanner) {
+        System.out.print("Nhập họ tên cần tìm: ");
+        String findName = scanner.nextLine();
+
+        SVDV svTim = timSinhVien(dssv, findName);
+        
+        while (!dssv.contains(svTim)) {
+            System.out.print("Tên không tồn tại, nhập lại: ");
+            findName = scanner.nextLine();
+            svTim = timSinhVien(dssv, findName);
+        }
+        SVDV.xoaSinhVien(dssv, svTim);
     }
 }
