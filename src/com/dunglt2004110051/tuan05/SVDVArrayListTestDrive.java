@@ -2,7 +2,7 @@ package com.dunglt2004110051.tuan05;
 
 import java.util.Scanner;
 
-public class QuanLySVDV {
+public class SVDVArrayListTestDrive {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         // List<SVDV> dsSinhVien = new ArrayList<>();
