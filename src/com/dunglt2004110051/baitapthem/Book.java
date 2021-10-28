@@ -1,5 +1,7 @@
 package com.dunglt2004110051.baitapthem;
 
+import java.util.Scanner;
+
 public class Book {
     // Thuộc tính
     double gia;
@@ -38,5 +40,30 @@ public class Book {
         System.out.println("Giá bán: " + giaBan + "đ");
         System.out.println("Số lượng: " + soLuong);
         System.out.println("Loại: " + loai);
+    }
+    // Nhập danh sách
+    Book nhapDanhSach(Scanner scanner) {
+        System.out.print("Giá: ");
+        double gia = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.print("Nhà xuất bản: ");
+        String nsx = scanner.nextLine();
+
+        System.out.print("Năm xuất bản: ");
+        int namSX = scanner.nextInt();
+
+        System.out.print("Giá bán: ");
+        double giaBan = scanner.nextDouble();
+
+        System.out.print("Số lượng: ");
+        int sl = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Loại: ");
+        String loai = scanner.nextLine();
+
+        Book book = new Book(gia, nsx, namSX, giaBan, sl, loai);
+        return book;
     }
 }

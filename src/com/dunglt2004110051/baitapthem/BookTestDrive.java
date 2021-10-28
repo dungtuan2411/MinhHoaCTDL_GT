@@ -78,33 +78,8 @@ public class BookTestDrive {
         } while (luaChon != 0);
     }
 
-    // Nhập danh sách
-    static Book nhap(Scanner scanner) {
-        System.out.print("Giá: ");
-        double gia = scanner.nextDouble();
-        scanner.nextLine();
-
-        System.out.print("Nhà xuất bản: ");
-        String nsx = scanner.nextLine();
-
-        System.out.print("Năm xuất bản: ");
-        int namSX = scanner.nextInt();
-
-        System.out.print("Giá bán: ");
-        double giaBan = scanner.nextDouble();
-
-        System.out.print("Số lượng: ");
-        int sl = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.print("Loại: ");
-        String loai = scanner.nextLine();
-
-        Book book = new Book(gia, nsx, namSX, giaBan, sl, loai);
-        return book;
-    }
-
     static void nhapDanhSach(Book[] listBook, Scanner scanner) {
+        Book book;
         // Kiểm tra, nếu vượt quá slpt sẽ không thể nhập tiếp
         boolean isNotExist = false;
         for (int i = 0; i < listBook.length; i++) {
@@ -113,12 +88,12 @@ public class BookTestDrive {
                 break;
             }
         }
-
         if (isNotExist) {
             System.out.println("Không thể nhập tiếp do vượt quá số lượng sách!");
             System.out.println("Nếu muốn thêm sách vui lòng chọn 3!");
             return;
         }
+
         // Nếu slpt = 0 (bị xóa hết), cần thêm
         if (listBook.length == 0) {
             arrayBooks();
@@ -126,7 +101,9 @@ public class BookTestDrive {
         // Nhập thông tin sách
         for (int i = 0; i < listBook.length; i++) {
             System.out.println("\nSách thứ " + (i + 1));
-            listBook[i] = nhap(scanner);
+            // listBook[i] = nhap(scanner);
+            book = new Book();
+            listBook[i] = book.nhapDanhSach(scanner);
         }
     }
 
@@ -174,7 +151,9 @@ public class BookTestDrive {
         }
 
         System.out.println("\n===== Nhập thông tin sách muốn thêm =====");
-        Book newBook = nhap(scanner);
+        Book newBook = new Book();
+        newBook = newBook.nhapDanhSach(scanner);
+
         int arrLength = listBooks.length;
         Book[] newListBook = new Book[arrLength + 1];
 
