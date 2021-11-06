@@ -4,6 +4,9 @@ public class Sanpham {
     public String tenSanPham;
     public double gia;
 
+    public Sanpham() {
+    }
+
     public Sanpham(String name, double price) {
         tenSanPham = name;
         gia = price;

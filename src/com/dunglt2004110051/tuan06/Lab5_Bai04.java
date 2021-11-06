@@ -1,4 +1,4 @@
-package com.dunglt2004110051.tuan05;
+package com.dunglt2004110051.tuan06;
 
 import java.util.Scanner;
 
@@ -46,10 +46,10 @@ public class Lab5_Bai04 {
                 case 4:
                     xuatGiaTrungBinh(dsSanPham);
                     break;
-                case 5:
-                    scanner.nextLine();
-                    dsSanPham = themPhanTu(dsSanPham, scanner);
-                    break;
+                // case 5:
+                //     scanner.nextLine();
+                //     dsSanPham = themPhanTu(dsSanPham, scanner);
+                //     break;
                 case 6:
                     System.out.println("Kết thúc chương trình");
                     break;
@@ -72,7 +72,7 @@ public class Lab5_Bai04 {
     }
 
     static void nhapMangSanPham(Sanpham[] arrSanpham, Scanner scanner) {
-        for (int i = 0; i < arrSanpham.length; i++) {
+        for (int i = 0; i < arrSanpham.length; i++) {          
             arrSanpham[i] = nhapThongTin(scanner);
         }
     }
