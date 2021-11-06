@@ -37,7 +37,41 @@ public class MyLinkedList {
     }
 
     void xoaPhanTuDau() {
-        
+        Node current = head;
+
+        if (head == null) {
+            System.out.println("Danh sách rỗng");
+            return;
+        }
+        // Không cần duyệt
+        head = current.next;
+        System.out.println("Phần tử đầu bị xóa: " + current.data);
+        current = null;
+    }
+
+    void xoaPhanTuCuoi() {
+        Node current = head;
+        Node prev = null, nxtNode = null;
+
+        if (head == null) {
+            System.out.println("Danh sách rỗng");
+            return;
+        }
+        // Xác định phần tử nằm trước tail
+        // tail = prev
+        // tail.next = null
+        while (current != null) {
+            nxtNode = current.next;
+            if (nxtNode.next == null) {
+                // Nếu nxtNode.next = null thì đây là tail
+                // Trỏ next của prev đến null
+                prev = current;
+                System.out.println("Phần tử cuối bị xóa: " + nxtNode.data);
+                prev.next = null;
+            }
+
+            current = current.next;
+        }
     }
 
     void xoaPhanTuBatKi(int d) {
@@ -61,6 +95,7 @@ public class MyLinkedList {
             }
             // Tìm nxtNode
             if (current.data == d && prev != null) {
+                System.out.println("Phần tử bị xóa: " + current.data);
                 nxtNode = current.next;
                 // prev.next trỏ đến nxtNode => current không ai trỏ đến =>bị xóa
                 prev.next = nxtNode;

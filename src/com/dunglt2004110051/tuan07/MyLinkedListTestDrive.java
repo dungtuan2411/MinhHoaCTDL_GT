@@ -11,8 +11,11 @@ public class MyLinkedListTestDrive {
         linkedList.themVaoDauDS(3);
         linkedList.themVaoDauDS(5);
         linkedList.themVaoDauDS(7);
+        linkedList.themVaoDauDS(8);
 
         linkedList.xoaPhanTuBatKi(5);
+        linkedList.xoaPhanTuDau();
+        linkedList.xoaPhanTuCuoi();
 
         linkedList.inDanhSach();
     }
