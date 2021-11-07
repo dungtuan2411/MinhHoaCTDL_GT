@@ -51,23 +51,24 @@ public class MyLinkedList {
 
     void xoaPhanTuCuoi() {
         Node current = head;
-        Node prev = null, nxtNode = null;
+        Node nxtNode = null;
 
         if (head == null) {
             System.out.println("Danh sách rỗng");
             return;
         }
         // Xác định phần tử nằm trước tail
-        // tail = prev
+        // tail = current
         // tail.next = null
         while (current != null) {
             nxtNode = current.next;
             if (nxtNode.next == null) {
                 // Nếu nxtNode.next = null thì đây là tail
                 // Trỏ next của prev đến null
-                prev = current;
+                tail = current;
                 System.out.println("Phần tử cuối bị xóa: " + nxtNode.data);
-                prev.next = null;
+                tail.next = null;
+                return;
             }
 
             current = current.next;
@@ -97,7 +98,7 @@ public class MyLinkedList {
             if (current.data == d && prev != null) {
                 System.out.println("Phần tử bị xóa: " + current.data);
                 nxtNode = current.next;
-                // prev.next trỏ đến nxtNode => current không ai trỏ đến =>bị xóa
+                // prev.next trỏ đến nxtNode => current không ai trỏ đến => bị xóa
                 prev.next = nxtNode;
                 return;
             }
