@@ -17,6 +17,6 @@ public class Node {
     }
 
     void inData() {
-        System.out.println(data);
+        System.out.print(data + " ");
     }
 }

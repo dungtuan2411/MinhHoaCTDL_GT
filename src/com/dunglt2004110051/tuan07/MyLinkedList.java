@@ -8,7 +8,23 @@ public class MyLinkedList {
         head = tail = null;
     }
 
-    void themVaoCuoiDS(int d) {
+    boolean isEmpty() {
+        return (head == null) ? true : false;
+    }
+
+    // Kiểm tra phần tử có trong ds
+    boolean isNull(int d) {
+        Node current = head;
+        while (current != null) {
+            if (current.data == d){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+    // Thêm vào cuối ds
+    void addLast(int d) {
         Node newNode = new Node(d);
 
         if (head == null) {
@@ -21,8 +37,8 @@ public class MyLinkedList {
             tail = newNode;
         }
     }
-
-    void themVaoDauDS(int d) {
+    // Thêm vào đầu ds
+    void addFirst(int d) {
         Node newNode = new Node(d);
 
         if (head == null) {
@@ -36,20 +52,60 @@ public class MyLinkedList {
         }
     }
 
-    void xoaPhanTuDau() {
-        Node current = head;
+    // Thêm trước 1 phần tử
+    void addMiddle(int d, int newNodeData) {
+        // Tìm 1 phần tử và thêm vào trước phần tử đó
+        /**
+         * cho current bắt đầu từ head
+         * current.next = d thì prev = current
+         * prev.next = newNode
+         */
+        Node newNode = new Node(newNodeData);
+        Node curNode = head;
+        Node prev;
 
+        // Nếu ds rỗng
         if (head == null) {
-            System.out.println("Danh sách rỗng");
+            head = newNode;
+            tail = newNode;
+        }
+
+        if (!isNull(d)) {
+            System.out.printf("Phần tử %d không tồn tại", d);
             return;
         }
+
+        // Nếu phần tử người dùng chọn là head
+        if (head.data == d) {
+            addFirst(newNodeData);
+            return;
+        }
+        
+        while (curNode != null) {
+            // Nếu phần tử người dùng chọn là tail
+            if (curNode.next == null && curNode.data == d) {
+                addLast(newNodeData);
+                return;
+            }
+            if (curNode.next.data == d) {
+                prev = curNode;
+                newNode.next = curNode.next;
+                prev.next = newNode;
+                return;
+            }
+            curNode = curNode.next;
+        }
+    }
+
+    void deleteFirst() {
+        Node current = head;
         // Không cần duyệt
         head = current.next;
         System.out.println("Phần tử đầu bị xóa: " + current.data);
         current = null;
     }
 
-    void xoaPhanTuCuoi() {
+    void deleteLast() {
         Node current = head;
         Node nxtNode = null;
 
@@ -75,19 +131,27 @@ public class MyLinkedList {
         }
     }
 
-    void xoaPhanTuBatKi(int d) {
+    void deleteMid(int d) {
         Node prev = null; // node trước phần tử bị xóa
         Node nxtNode = null; // node sau phần tử bị xóa
         Node current = head;
 
-        if (head == null) {
-            System.out.println("Danh sách rỗng");
+        if (!isNull(d)) {
+            System.out.printf("Phần tử %d không tồn tại", d);
+            return;
+        }
+
+        // Nếu phần tử người dùng chọn là head => xóa pt đầu
+        if (head.data == d) {
+            deleteFirst();
             return;
         }
 
         while (current != null) {
-            if (current.next == null) {
-                System.out.println("Thực hiện xóa phần tử cuối");
+            // Nếu phần tử người dùng chọn là head => xóa pt cuối
+            if (current.next == null && current.data == d) {
+                deleteLast();
+                return;
             }
             // Tìm prev
             if (current.next.data == d) {
@@ -106,9 +170,28 @@ public class MyLinkedList {
         }
     }
 
-    void inDanhSach() {
+    // Sửa 1 phần tử
+    void update(int d, int fixedData) {
         Node current = head;
-        if (head == null) {
+
+        if (!isNull(d)) {
+            System.out.printf("Phần tử %d không tồn tại", d);
+            return;
+        }
+
+        while (current != null) {
+            if (current.data == d) {
+                // Tiến hành sửa data
+                current.data = fixedData;
+                break;
+            }
+            current = current.next;
+        }
+    }
+
+    void printList() {
+        Node current = head;
+        if (isEmpty()) {
             System.out.println("Danh sách rỗng");
             return;
         }
