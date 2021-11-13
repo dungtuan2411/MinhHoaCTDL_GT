@@ -14,16 +14,16 @@ public class MyLinkedListTestDrive {
         int choice;
         do {
             System.err.println("\n||===== Int numbers LinkedList =====||");
-            System.out.println("||1: Thêm vào đầu danh sách       ||");
-            System.out.println("||2: Thêm vào cuối danh sách      ||");
-            System.out.println("||3: Thêm vào trước 1 phần tử     ||");
-            System.out.println("||4: Xóa phần tử đầu danh sách    ||");
-            System.out.println("||5: Xóa phần tử cuối danh sách   ||");
-            System.out.println("||6: Xóa phần tử bất kì           ||");
-            System.out.println("||7: Sửa thông tin phần tử bất kì ||");
-            System.out.println("||8: In danh sách                 ||");
-            System.out.println("||9: Kết thúc                     ||");
-            System.out.println("||================================||");
+            System.out.println("||1: Thêm vào đầu danh sách        ||");
+            System.out.println("||2: Thêm vào cuối danh sách       ||");
+            System.out.println("||3: Thêm vào trước 1 phần tử      ||");
+            System.out.println("||4: Xóa phần tử đầu danh sách     ||");
+            System.out.println("||5: Xóa phần tử cuối danh sách    ||");
+            System.out.println("||6: Xóa phần tử bất kì            ||");
+            System.out.println("||7: Sửa thông tin phần tử bất kì  ||");
+            System.out.println("||8: In danh sách                  ||");
+            System.out.println("||9: Kết thúc                      ||");
+            System.out.println("||=================================||");
             System.out.print("Bạn chọn: ");
             choice = scanner.nextInt();
 
