@@ -6,10 +6,10 @@ public class SVDV {
     String hoTen;
     float diem;
 
-    SVDV() {
+    public SVDV() {
     }
 
-    SVDV(String name, float grade) {
+    public SVDV(String name, float grade) {
         hoTen = name;
         diem = grade;
     }
@@ -21,7 +21,7 @@ public class SVDV {
         diem = scanner.nextFloat();
     }
 
-    void inThongTin() {
+    public void inThongTin() {
         System.out.println("Họ tên sinh viên: " + hoTen);
         System.out.println("Điểm trung bình: " + diem);
     }
