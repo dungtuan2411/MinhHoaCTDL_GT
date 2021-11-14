@@ -3,7 +3,7 @@ package com.dunglt2004110051.tuan05;
 import java.util.Scanner;
 
 public class SVDV {
-    String hoTen;
+    public String hoTen;
     float diem;
 
     public SVDV() {
