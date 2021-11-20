@@ -7,29 +7,31 @@ public class Apple {
     float khoiLuong;
     String color;
 
-    Apple(int maID, float w, String c) {
+    public Apple() {
+    }
+
+    public Apple(int maID, float w, String c) {
         id = maID;
         khoiLuong = w;
         color = c;
     }
 
-    static Apple nhapThongTin(Scanner scanner) {
+    public void nhapThongTin(Scanner scanner) {
         System.out.println("Nhập thông tin táo: ");
         System.out.print("Mã id: ");
-        int id = scanner.nextInt();
+        id = scanner.nextInt();
 
         System.out.print("Khối lượng: ");
-        float weight = scanner.nextFloat();
+        khoiLuong = scanner.nextFloat();
 
         scanner.nextLine();
         System.out.print("Màu: ");
-        String color = scanner.nextLine();
-
-        return new Apple(id, weight, color);
+        color = scanner.nextLine();
     }
 
-    void inThongTin() {
-        System.out.println("\nMã id: " + id);
+    public void inThongTin() {
+        System.out.print("\n");
+        System.out.println("Mã id: " + id);
         System.out.println("Khối lượng: " + khoiLuong);
         System.out.println("Màu: " + color);
     }

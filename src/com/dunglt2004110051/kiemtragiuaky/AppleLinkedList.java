@@ -4,35 +4,50 @@ public class AppleLinkedList {
     // Chứa 2 node head và tail
     Node head = null, tail = null;
 
-    public AppleLinkedList(){
-
+    public AppleLinkedList() {
     }
 
-    void themVaoCuoiDanhSach(Apple a) {
+    public void themVaoCuoiDanhSach(Apple a) {
         Node newApple = new Node(a);
         if (head == null) {
             head = newApple;
             tail = newApple;
-        }
-        else {
+        } else {
             tail.next = newApple;
             tail = newApple;
         }
     }
 
-    void themVaoDauDanhSach(Apple a) {
+    public void themVaoDauDanhSach(Apple a) {
         Node newApple = new Node(a);
         if (head == null) {
             head = newApple;
             tail = newApple;
-        }
-        else {
+        } else {
             newApple.next = head;
             head = newApple;
         }
     }
 
-    void inDanhSach() {
+    public void bubleSortAscending() {
+        Node current = head, nxtNode = null;
+        float temp;
+
+        while (current != null) {
+            nxtNode = current.next;
+            while (nxtNode != null) {
+                if (current.apple.khoiLuong > nxtNode.apple.khoiLuong) {
+                    temp = current.apple.khoiLuong;
+                    current.apple.khoiLuong = nxtNode.apple.khoiLuong;
+                    nxtNode.apple.khoiLuong = temp;
+                }
+                nxtNode = nxtNode.next;
+            }
+            current = current.next;
+        }
+    }
+
+    public void inDanhSach() {
         Node current = head;
 
         if (head == null) {

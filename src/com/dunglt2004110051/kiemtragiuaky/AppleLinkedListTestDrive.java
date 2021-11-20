@@ -22,23 +22,23 @@ public class AppleLinkedListTestDrive {
             luaChon = scanner.nextInt();
 
             switch (luaChon) {
-                case 1:
+            case 1:
                 scanner.nextLine();
                 themVaoCuoiDanhSach(linkedListApple, scanner);
-                    break;
-                case 2:
-                    scanner.nextLine();
-                    themVaoDauDanhSach(linkedListApple, scanner);
-                    break;
-                case 3:
-                    inDanhSachTao(linkedListApple);
-                    break;
-                case 0:
-                    System.out.println("Kết thúc chương trình");
-                    break;
-                default:
-                    System.out.println("Nhập sai, nhập lại");
-                    break;
+                break;
+            case 2:
+                scanner.nextLine();
+                themVaoDauDanhSach(linkedListApple, scanner);
+                break;
+            case 3:
+                inDanhSachTao(linkedListApple);
+                break;
+            case 0:
+                System.out.println("Kết thúc chương trình");
+                break;
+            default:
+                System.out.println("Nhập sai, nhập lại");
+                break;
             }
 
         } while (luaChon != 0);
@@ -48,33 +48,35 @@ public class AppleLinkedListTestDrive {
         String xacNhan = "y";
         do {
             if (xacNhan.toUpperCase().equals("Y")) {
-                Apple appleNhap = Apple.nhapThongTin(scanner);
+                Apple appleNhap = new Apple();
+                appleNhap.nhapThongTin(scanner);
                 linkedListApple.themVaoCuoiDanhSach(appleNhap);
             } else
                 System.out.println("Sai cú pháp! Chọn y hoặc n");
 
             System.out.print("Nhập thêm (Y/N) ?");
-            xacNhan = scanner.nextLine(); 
-            
+            xacNhan = scanner.nextLine();
+
         } while (!xacNhan.toUpperCase().equals("N"));
     }
 
     static void themVaoDauDanhSach(AppleLinkedList linkedListApple, Scanner scanner) {
         System.out.println("Thêm táo mới vào đầu danh sách: ");
-        String xacNhan = "y";
+        char xacNhan = 'y';
         do {
-            if (xacNhan.toUpperCase().equals("Y")) {
-                Apple appleNhap = Apple.nhapThongTin(scanner);
+            if (Character.toUpperCase(xacNhan) == 'Y') {
+                Apple appleNhap = new Apple();
+                appleNhap.nhapThongTin(scanner);
                 linkedListApple.themVaoDauDanhSach(appleNhap);
             } else
                 System.out.println("Sai cú pháp! Chọn y hoặc n");
 
             System.out.print("Nhập thêm (Y/N) ?");
-            xacNhan = scanner.nextLine(); 
-            
-        } while (!xacNhan.toUpperCase().equals("N"));
+            xacNhan = scanner.next().charAt(0);
+
+        } while (Character.toUpperCase(xacNhan) != 'N');
     }
-    
+
     static void inDanhSachTao(AppleLinkedList linkedListApple) {
         System.out.println("====== Danh sách táo ==========");
         linkedListApple.inDanhSach();

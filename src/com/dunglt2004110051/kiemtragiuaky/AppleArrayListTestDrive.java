@@ -46,18 +46,18 @@ public class AppleArrayListTestDrive {
     }
 
     static void themTaoVaoKho(List<Apple> listApple, Scanner scanner) {
-        String xacNhan = "y";
+        char xacNhan = 'y';
         do {
-            if (xacNhan.toUpperCase().equals("Y")) {
-                Apple newApple = Apple.nhapThongTin(scanner);
-
+            if (Character.toUpperCase(xacNhan) == 'Y') {
+                Apple newApple = new Apple();
+                newApple.nhapThongTin(scanner);
                 listApple.add(newApple);
             } else
                 System.out.println("Sai cú pháp! Chọn y hoặc n");
 
             System.out.print("Bạn muốn nhập thêm (Y/N)? ");
-            xacNhan = scanner.nextLine();
-        } while (!xacNhan.toUpperCase().equals("N"));
+            xacNhan = scanner.next().charAt(0);
+        } while (Character.toUpperCase(xacNhan) != 'N');
     }
 
     static Apple timTao(List<Apple> listApple, String color) {
@@ -83,14 +83,20 @@ public class AppleArrayListTestDrive {
             findColor = scanner.nextLine();
             foundApple = timTao(listApple, findColor);
         }
-        System.out.println("\n=======Táo đã tìm thấy: ");
-        foundApple.inThongTin();
+
+        System.out.println("\n===== Danh sách táo tìm thấy =====");
+        for (int i = 0; i < listApple.size(); i++) {
+            Apple foundedApples = listApple.get(i);
+            if (foundedApples.color.equals(findColor)) {
+                foundedApples.inThongTin();
+            }
+        }
     }
 
     static void inDanhSachTao(List<Apple> listApple) {
         System.out.println("\n======= Danh sách táo =========");
         for (int i = 0; i < listApple.size(); i++) {
-            System.out.println("======== Táo thứ " + (i + 1));
+            System.out.println("\n======== Táo thứ " + (i + 1));
             listApple.get(i).inThongTin();
         }
     }
