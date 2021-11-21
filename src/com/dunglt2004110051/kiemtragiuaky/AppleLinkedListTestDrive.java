@@ -45,9 +45,9 @@ public class AppleLinkedListTestDrive {
     }
 
     static void themVaoCuoiDanhSach(AppleLinkedList linkedListApple, Scanner scanner) {
-        String xacNhan = "y";
+        char xacNhan = 'y';
         do {
-            if (xacNhan.toUpperCase().equals("Y")) {
+            if (Character.toUpperCase(xacNhan) == 'Y') {
                 Apple appleNhap = new Apple();
                 appleNhap.nhapThongTin(scanner);
                 linkedListApple.themVaoCuoiDanhSach(appleNhap);
@@ -55,9 +55,9 @@ public class AppleLinkedListTestDrive {
                 System.out.println("Sai cú pháp! Chọn y hoặc n");
 
             System.out.print("Nhập thêm (Y/N) ?");
-            xacNhan = scanner.nextLine();
+            xacNhan = scanner.next().charAt(0);
 
-        } while (!xacNhan.toUpperCase().equals("N"));
+        } while (Character.toUpperCase(xacNhan) != 'N');
     }
 
     static void themVaoDauDanhSach(AppleLinkedList linkedListApple, Scanner scanner) {

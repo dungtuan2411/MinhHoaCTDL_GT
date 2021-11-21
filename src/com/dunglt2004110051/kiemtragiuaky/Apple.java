@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Apple {
     int id;
-    float khoiLuong;
+    double khoiLuong;
     String color;
 
     public Apple() {
     }
 
-    public Apple(int maID, float w, String c) {
+    public Apple(int maID, double w, String c) {
         id = maID;
         khoiLuong = w;
         color = c;
@@ -22,7 +22,7 @@ public class Apple {
         id = scanner.nextInt();
 
         System.out.print("Khối lượng: ");
-        khoiLuong = scanner.nextFloat();
+        khoiLuong = scanner.nextDouble();
 
         scanner.nextLine();
         System.out.print("Màu: ");
