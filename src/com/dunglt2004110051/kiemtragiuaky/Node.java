@@ -7,7 +7,10 @@ public class Node {
     Node next;
 
     // Hàm tạo
-    Node(){}
+    Node(){
+        apple = null;
+        next = null;
+    }
 
     Node(Apple a) {
         apple = a;
